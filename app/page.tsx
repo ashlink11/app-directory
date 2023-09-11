@@ -12,6 +12,9 @@ export default function Page() {
         <h1 className="text-xl font-medium text-gray-300">
           welcome to brain-swap!
         </h1>
+        <h2 className="text-small font-medium text-gray-500">
+          the evolution of human philosophy is the evolution of AI philosophy
+        </h2>
 
         <div className="space-y-10 text-white">
           {demos.map((section) => {
