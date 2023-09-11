@@ -9,20 +9,13 @@ Next.js recently introduced the App Router with support for:
 
 The App Router can coexist with the existing `pages` directory for incremental adoption. While you **don't need to use the App Router** when upgrading to Next.js 13, we're laying the foundations to build complex interfaces while shipping less JavaScript.
 
-## Running Locally
-
-1. Install dependencies:
-
-```sh
-pnpm install
-```
-
-2. Start the dev server:
-
-```sh
-pnpm dev
-```
-
 ## Documentation
 
 https://nextjs.org/docs
+
+npm install -D tailwindcss
+npx tailwindcss init
+npm i @nextui-org/react framer-motion
+npm i next
+npm install
+npm dev

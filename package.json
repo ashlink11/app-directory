@@ -19,9 +19,11 @@
   },
   "dependencies": {
     "@heroicons/react": "1.0.6",
+    "@nextui-org/react": "2.1.12",
     "clsx": "1.2.1",
     "date-fns": "2.29.3",
     "dinero.js": "2.0.0-alpha.8",
+    "framer-motion": "10.16.4",
     "ms": "3.0.0-canary.1",
     "next": "13.4.13-canary.6",
     "react": "18.2.0",
