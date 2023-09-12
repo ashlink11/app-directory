@@ -27,9 +27,15 @@ export default function Page() {
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                   {section.items.map((item) => {
                     return (
-                      <div key={section.name}>
-                        <div className="font-medium text-gray-200 group-hover:text-gray-50">
-                          {item.name}
+                      <div
+                        key={section.name}
+                        className="rounded-xl bg-gray-800 p-3"
+                      >
+                        <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
+                          <span>{item.name}</span>
+                          <Button radius="full" size="sm" className="">
+                            remove
+                          </Button>
                         </div>
 
                         <div>
@@ -39,8 +45,6 @@ export default function Page() {
                             </div>
                           ) : null}
                         </div>
-
-                        <Button>X</Button>
                       </div>
                     );
                   })}
