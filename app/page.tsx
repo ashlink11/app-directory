@@ -34,7 +34,7 @@ export default function Page() {
                         <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
                           <span>{item.name}</span>
                           <Button radius="full" size="sm" className="">
-                            remove
+                            edit
                           </Button>
                         </div>
 

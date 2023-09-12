@@ -9,19 +9,25 @@ export const demos: { name: string; items: Item[] }[] = [
     name: 'example brain',
     items: [
       {
-        name: 'Nested Layouts',
+        name: 'stoicism',
         slug: 'layouts',
-        description: 'Create UI that is shared across routes',
+        description:
+          'amor fati. memento mori. temperance, courage, wisdom, justice.',
       },
       {
-        name: 'Grouped Layouts',
+        name: 'existentialism',
         slug: 'route-groups',
-        description: 'Organize routes without affecting URL paths',
+        description: 'create our own meaning.',
       },
       {
-        name: 'Parallel Routes',
+        name: 'sufism',
         slug: 'parallel-routes',
-        description: 'Render multiple pages in the same layout',
+        description: 'crying & pulling one heartstring at a time.',
+      },
+      {
+        name: 'pop culturism',
+        slug: 'parallel-routes',
+        description: 'popular knowledge and wisdom.',
       },
     ],
   },
@@ -29,20 +35,19 @@ export const demos: { name: string; items: Item[] }[] = [
     name: 'example swaps',
     items: [
       {
-        name: 'Loading',
+        name: 'nihilism',
         slug: 'loading',
-        description:
-          'Create meaningful Loading UI for specific parts of an app',
+        description: 'there is no meaning.',
       },
       {
-        name: 'Error',
+        name: 'YOLO',
         slug: 'error-handling',
-        description: 'Create Error UI for specific parts of an app',
+        description: 'you only live once.',
       },
       {
-        name: 'Not Found',
+        name: 'absurdism',
         slug: 'not-found',
-        description: 'Create Not Found UI for specific parts of an app',
+        description: 'comedy. life is absurd.',
       },
     ],
   },
@@ -50,10 +55,9 @@ export const demos: { name: string; items: Item[] }[] = [
     name: 'create a swap',
     items: [
       {
-        name: 'Streaming with Suspense',
+        name: '__title__',
         slug: 'streaming',
-        description:
-          'Streaming data fetching from the server with React Suspense',
+        description: '__description__',
       },
     ],
   },
