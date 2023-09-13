@@ -24,17 +24,17 @@ export default function Page() {
                   {section.name}
                 </div>
 
-                <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+                <div className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2">
                   {section.items.map((item) => {
                     return (
                       <div
                         key={section.name}
-                        className="rounded-xl bg-gray-800 p-3"
+                        className="rounded-xl bg-gray-700 p-3"
                       >
                         <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
                           <span>{item.name}</span>
                           <Button radius="full" size="sm" className="">
-                            edit
+                            {item.buttonText}
                           </Button>
                         </div>
 
