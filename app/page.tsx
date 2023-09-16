@@ -4,8 +4,11 @@ import { Button, ButtonGroup } from '@nextui-org/react';
 import Link from 'next/link';
 import * as React from 'react';
 import { NextUIProvider } from '@nextui-org/react';
+import { useState, useEffect } from 'react';
 
 export default function Page() {
+  const [buttonText, changeButtonText] = useState();
+
   return (
     <NextUIProvider>
       <div className="space-y-8">
@@ -26,6 +29,10 @@ export default function Page() {
 
                 <div className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2">
                   {section.items.map((item) => {
+                    function changeButtonState(buttonText: string) {
+                      throw new Error('Function not implemented.');
+                    }
+
                     return (
                       <div
                         key={section.name}
@@ -33,7 +40,14 @@ export default function Page() {
                       >
                         <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
                           <span>{item.name}</span>
-                          <Button radius="full" size="sm" className="">
+                          <Button
+                            radius="full"
+                            size="sm"
+                            className=""
+                            onClick={() => {
+                              changeButtonState(item.buttonText);
+                            }}
+                          >
                             {item.buttonText}
                           </Button>
                         </div>
