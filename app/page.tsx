@@ -6,9 +6,29 @@ import * as React from 'react';
 import { NextUIProvider } from '@nextui-org/react';
 import { useState, useEffect } from 'react';
 
-export default function Page() {
-  const [buttonText, changeButtonText] = useState();
+const [buttonTextDynamic, changeButtonText] = useState('');
+const [currentSwap, changeCurrentSwap] = useState();
 
+function changeButtonState(buttonText: string) {
+  if (buttonTextDynamic === 'remove') {
+    removeSwap(currentSwap);
+    changeButtonState('add');
+  }
+  if (buttonTextDynamic === 'edit') {
+    startToEditSwap(currentSwap);
+    changeButtonState('done');
+  }
+}
+
+function removeSwap(currentSwap: undefined) {
+  throw new Error('Function not implemented.');
+}
+
+function startToEditSwap(currentSwap: undefined) {
+  throw new Error('Function not implemented.');
+}
+
+export default function Page() {
   return (
     <NextUIProvider>
       <div className="space-y-8">
@@ -26,13 +46,8 @@ export default function Page() {
                 <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   {section.name}
                 </div>
-
                 <div className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2">
                   {section.items.map((item) => {
-                    function changeButtonState(buttonText: string) {
-                      throw new Error('Function not implemented.');
-                    }
-
                     return (
                       <div
                         key={section.name}
