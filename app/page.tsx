@@ -7,24 +7,24 @@ import { NextUIProvider } from '@nextui-org/react';
 import { useState, useEffect } from 'react';
 
 export default function Page() {
-  function changeButtonState(buttonText: string) {
-    const [buttonTextDynamic, changeButtonText] = useState('');
-    const [currentSwap, changeCurrentSwap] = useState();
+  const [buttonTextDynamic, changeButtonText] = useState('');
+  const [currentSwap, changeCurrentSwap] = useState();
 
+  function changeButtonState(buttonText: string) {
     if (buttonTextDynamic === 'remove') {
-      removeSwap(currentSwap);
-      changeButtonState('add');
+      RemoveSwap(currentSwap);
+      changeButtonText('add');
     }
     if (buttonTextDynamic === 'edit') {
-      startToEditSwap(currentSwap);
-      changeButtonState('done');
+      StartToEditSwap(currentSwap);
+      changeButtonText('done');
     }
   }
-  function removeSwap(currentSwap: undefined) {
+  function RemoveSwap(currentSwap: undefined) {
     throw new Error('Function not implemented.');
   }
 
-  function startToEditSwap(currentSwap: undefined) {
+  function StartToEditSwap(currentSwap: undefined) {
     throw new Error('Function not implemented.');
   }
   return (
