@@ -6,29 +6,27 @@ import * as React from 'react';
 import { NextUIProvider } from '@nextui-org/react';
 import { useState, useEffect } from 'react';
 
-const [buttonTextDynamic, changeButtonText] = useState('');
-const [currentSwap, changeCurrentSwap] = useState();
-
-function changeButtonState(buttonText: string) {
-  if (buttonTextDynamic === 'remove') {
-    removeSwap(currentSwap);
-    changeButtonState('add');
-  }
-  if (buttonTextDynamic === 'edit') {
-    startToEditSwap(currentSwap);
-    changeButtonState('done');
-  }
-}
-
-function removeSwap(currentSwap: undefined) {
-  throw new Error('Function not implemented.');
-}
-
-function startToEditSwap(currentSwap: undefined) {
-  throw new Error('Function not implemented.');
-}
-
 export default function Page() {
+  function changeButtonState(buttonText: string) {
+    const [buttonTextDynamic, changeButtonText] = useState('');
+    const [currentSwap, changeCurrentSwap] = useState();
+
+    if (buttonTextDynamic === 'remove') {
+      removeSwap(currentSwap);
+      changeButtonState('add');
+    }
+    if (buttonTextDynamic === 'edit') {
+      startToEditSwap(currentSwap);
+      changeButtonState('done');
+    }
+  }
+  function removeSwap(currentSwap: undefined) {
+    throw new Error('Function not implemented.');
+  }
+
+  function startToEditSwap(currentSwap: undefined) {
+    throw new Error('Function not implemented.');
+  }
   return (
     <NextUIProvider>
       <div className="space-y-8">
