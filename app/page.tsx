@@ -31,16 +31,13 @@ export default function Page() {
     <NextUIProvider>
       <div className="space-y-8">
         <h1 className="text-xl font-medium text-gray-300">
-          welcome to brain-swap!
+          welcome to brain-swap! ::: design your brain
         </h1>
-        <h2 className="text-small font-medium text-gray-500">
-          the evolution of human philosophy is the evolution of AI philosophy
-        </h2>
 
-        <div className="space-y-10 text-white">
+        <div id="main-container" className="space-y-10 text-white">
           {demos.map((section) => {
             return (
-              <div key={section.name} className="space-y-5">
+              <div id={section.name} key={section.name} className="space-y-5">
                 <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   {section.name}
                 </div>
@@ -48,6 +45,7 @@ export default function Page() {
                   {section.items.map((item) => {
                     return (
                       <div
+                        id={section.name}
                         key={section.name}
                         className="rounded-xl bg-gray-700 p-3"
                       >
@@ -80,6 +78,10 @@ export default function Page() {
             );
           })}
         </div>
+        <h2 className="text-small font-medium text-gray-500">
+          ~~~ the evolution of human philosophy is the evolution of AI
+          philosophy ~~~
+        </h2>
       </div>
     </NextUIProvider>
   );
