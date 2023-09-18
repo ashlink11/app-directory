@@ -48,7 +48,7 @@ export const demos: { name: string; items: Item[] }[] = [
     ],
   },
   {
-    name: 'all brain swaps (moods & mindsets)',
+    name: 'all other brain swaps (moods & mindsets)',
     items: [
       {
         name: 'nihilism',
