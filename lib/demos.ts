@@ -85,19 +85,19 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'layouts',
         description:
           'amor fati. memento mori. temperance, courage, wisdom, justice.',
-        buttonText: 'remove',
+        buttonText: 'add',
       },
       {
         name: 'existentialism',
         slug: 'route-groups',
         description: 'create our own meaning.',
-        buttonText: 'remove',
+        buttonText: 'add',
       },
       {
         name: 'sufism',
         slug: 'parallel-routes',
         description: 'crying & pulling one heartstring at a time.',
-        buttonText: 'remove',
+        buttonText: 'add',
       },
     ],
   },
