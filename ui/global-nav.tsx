@@ -1,6 +1,6 @@
 'use client';
 
-import { demos, type Item } from '#/lib/starting-data';
+import { startingData, type Item } from '#/lib/starting-data';
 import { NextLogo } from '#/ui/next-logo';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
@@ -8,6 +8,7 @@ import { MenuAlt2Icon, XIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { useState } from 'react';
 import Byline from './byline';
+import { start } from 'repl';
 
 export function GlobalNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +53,7 @@ export function GlobalNav() {
         })}
       >
         <nav className="space-y-6 px-2 pb-24 pt-5">
-          {demos.map((section) => {
+          {startingData.map((section) => {
             return (
               <div key={section.name}>
                 <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400/80">

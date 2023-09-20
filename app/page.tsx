@@ -69,38 +69,43 @@ export default function Page() {
                 <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   {section.name}
                 </div>
-                <div className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2">
-                  {section.items.map((item) => {
-                    return (
-                      <div
-                        id={section.name}
-                        key={section.name}
-                        className="rounded-xl bg-gray-700 p-3"
-                      >
-                        <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
-                          <span>{item.name}</span>
-                          <Button
-                            radius="full"
-                            size="sm"
-                            className=""
-                            onClick={() => {
-                              changeButtonState(item.buttonText);
-                            }}
-                          >
-                            {item.buttonText}
-                          </Button>
-                        </div>
+                <div className="">
+                  <div
+                    id={section.name}
+                    key={section.name}
+                    className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2"
+                  >
+                    {section.items.map((item) => {
+                      return (
+                        <div
+                          key={item.name}
+                          className="rounded-xl bg-gray-700 p-3"
+                        >
+                          <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
+                            <span>{item.name}</span>
+                            <Button
+                              radius="full"
+                              size="sm"
+                              className=""
+                              onClick={() => {
+                                changeButtonState(item.buttonText);
+                              }}
+                            >
+                              {item.buttonText}
+                            </Button>
+                          </div>
 
-                        <div>
-                          {item.description ? (
-                            <div className="line-clamp-3 text-sm text-gray-400 group-hover:text-gray-300">
-                              {item.description}
-                            </div>
-                          ) : null}
+                          <div>
+                            {item.description ? (
+                              <div className="line-clamp-3 text-sm text-gray-400 group-hover:text-gray-300">
+                                {item.description}
+                              </div>
+                            ) : null}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             );
