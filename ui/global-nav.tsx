@@ -1,6 +1,6 @@
 'use client';
 
-import { demos, type Item } from '#/lib/demos';
+import { demos, type Item } from '#/lib/starting-data';
 import { NextLogo } from '#/ui/next-logo';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';

@@ -1,5 +1,6 @@
 'use client';
-import { demos } from '#/lib/demos';
+import { startingData } from '#/lib/starting-data';
+import { startingSwaps } from '#/lib/starting-swaps';
 import { Button, ButtonGroup } from '@nextui-org/react';
 import Link from 'next/link';
 import * as React from 'react';
@@ -7,26 +8,53 @@ import { NextUIProvider } from '@nextui-org/react';
 import { useState, useEffect } from 'react';
 
 export default function Page() {
-  const [buttonTextDynamic, changeButtonText] = useState('');
-  const [currentSwap, changeCurrentSwap] = useState();
+  const [buttonTextDynamic, setButtonText] = useState('');
+  const [currentSwap, setCurrentSwap] = useState();
+  const [allSwaps, setAllSwaps] = useState([]);
+  const [yourBrainSwaps, setYourBrainSwaps] = useState([]);
+  const [swapCurrentlyEditing, setSwapCurrentlyEditing] = useState({});
+
+  useEffect(() => {
+    setAllSwaps(startingSwaps);
+    setYourBrainSwaps([
+      startingSwaps[0].items[0],
+      startingSwaps[0].items[1],
+      startingSwaps[0].items[2],
+      startingSwaps[0].items[3],
+    ]);
+    setSwapCurrentlyEditing({
+      name: '__title__',
+      slug: 'streaming',
+      description: '__description__',
+      buttonText: 'create',
+    });
+  }, []);
+
+  //console logging useEffect
+  useEffect(() => {
+    console.log('allSwaps:', allSwaps);
+    console.log('yourBrainSwaps:', yourBrainSwaps);
+    console.log('swapCurrentlyEditing:', swapCurrentlyEditing);
+  });
 
   function changeButtonState(buttonText: string) {
     if (buttonTextDynamic === 'remove') {
-      RemoveSwap(currentSwap);
-      changeButtonText('add');
+      removeSwap(currentSwap);
+      setButtonText('add');
     }
     if (buttonTextDynamic === 'edit') {
-      StartToEditSwap(currentSwap);
-      changeButtonText('done');
+      startToEditSwap(currentSwap);
+      setButtonText('done');
     }
   }
-  function RemoveSwap(currentSwap: undefined) {
+  function removeSwap(currentSwap: undefined) {
     throw new Error('Function not implemented.');
   }
 
-  function StartToEditSwap(currentSwap: undefined) {
+  function startToEditSwap(currentSwap: undefined) {
     throw new Error('Function not implemented.');
   }
+
   return (
     <NextUIProvider>
       <div className="space-y-8">
@@ -35,7 +63,7 @@ export default function Page() {
         </h1>
 
         <div id="main-container" className="space-y-10 text-white">
-          {demos.map((section) => {
+          {startingData.map((section) => {
             return (
               <div id={section.name} key={section.name} className="space-y-5">
                 <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">

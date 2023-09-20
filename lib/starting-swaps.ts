@@ -5,9 +5,8 @@ export type Item = {
   buttonText: string;
 };
 
-export const demos: { name: string; items: Item[] }[] = [
+export const startingSwaps: { items: Item[] }[] = [
   {
-    name: 'your brain swaps (moods & mindsets)',
     items: [
       {
         name: 'happy',
@@ -45,11 +44,6 @@ export const demos: { name: string; items: Item[] }[] = [
         description: 'things like music are the joy of life.',
         buttonText: 'remove',
       },
-    ],
-  },
-  {
-    name: 'all other brain swaps (moods & mindsets)',
-    items: [
       {
         name: 'nihilism',
         slug: 'loading',
@@ -98,17 +92,6 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'parallel-routes',
         description: 'crying & pulling one heartstring at a time.',
         buttonText: 'add',
-      },
-    ],
-  },
-  {
-    name: 'create a brain swap (mood and/or mindset)',
-    items: [
-      {
-        name: '__title__',
-        slug: 'streaming',
-        description: '__description__',
-        buttonText: 'create',
       },
     ],
   },
