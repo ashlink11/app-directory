@@ -8,8 +8,6 @@ import { NextUIProvider } from '@nextui-org/react';
 import { useState, useEffect } from 'react';
 
 export default function Page() {
-  const [buttonTextDynamic, setButtonText] = useState('');
-  const [currentSwap, setCurrentSwap] = useState();
   const [allOtherSwaps, setAllOtherSwaps] = useState([]);
   const [yourBrainSwaps, setYourBrainSwaps] = useState([]);
   const [swapCurrentlyEditing, setSwapCurrentlyEditing] = useState({});
@@ -44,22 +42,26 @@ export default function Page() {
     console.log('swapCurrentlyEditing:', swapCurrentlyEditing);
   });
 
-  function changeButtonState(buttonText: string) {
-    if (buttonTextDynamic === 'remove') {
-      removeSwap(currentSwap);
-      setButtonText('add');
+  function changeButtonState(swapID, swapButtonText) {
+    if (swapButtonText === 'add') {
+      // remove from allOtherSwaps
+      // add to yourBrainSwaps
+      // switch button text to remove
     }
-    if (buttonTextDynamic === 'edit') {
-      startToEditSwap(currentSwap);
-      setButtonText('done');
+    if (swapButtonText === 'remove') {
+      // remove from yourBrainSwaps
+      // add to allOtherSwaps
+      // switch button text to add
     }
-  }
-  function removeSwap(currentSwap: undefined) {
-    throw new Error('Function not implemented.');
-  }
-
-  function startToEditSwap(currentSwap: undefined) {
-    throw new Error('Function not implemented.');
+    if (swapButtonText === 'edit') {
+      // switch text fields to input fields
+      // switch button text to done
+    }
+    if (swapButtonText === 'done') {
+      // add to allOtherSwaps
+      // give it an id
+      // switch buttonText to add
+    }
   }
 
   function renderHeader(headerText) {
@@ -87,7 +89,7 @@ export default function Page() {
                       size="sm"
                       className=""
                       onClick={() => {
-                        changeButtonState(item.buttonText);
+                        changeButtonState(item.id, item.buttonText);
                       }}
                     >
                       {item.buttonText}
