@@ -10,19 +10,26 @@ import { useState, useEffect } from 'react';
 export default function Page() {
   const [buttonTextDynamic, setButtonText] = useState('');
   const [currentSwap, setCurrentSwap] = useState();
-  const [allSwaps, setAllSwaps] = useState([]);
+  const [allOtherSwaps, setAllOtherSwaps] = useState([]);
   const [yourBrainSwaps, setYourBrainSwaps] = useState([]);
   const [swapCurrentlyEditing, setSwapCurrentlyEditing] = useState({});
 
   useEffect(() => {
-    setAllSwaps(startingSwaps);
     setYourBrainSwaps([
       startingSwaps[0].items[0],
       startingSwaps[0].items[1],
       startingSwaps[0].items[2],
       startingSwaps[0].items[3],
     ]);
+    let startingSwapsArray = [];
+    let index = 0;
+    for (let i = 4; i < startingSwaps[0].items.length; i++) {
+      startingSwapsArray[index] = startingSwaps[0].items[i];
+      index++;
+    }
+    setAllOtherSwaps(startingSwapsArray);
     setSwapCurrentlyEditing({
+      id: '',
       name: '__title__',
       slug: 'streaming',
       description: '__description__',
@@ -32,7 +39,7 @@ export default function Page() {
 
   //console logging useEffect
   useEffect(() => {
-    console.log('allSwaps:', allSwaps);
+    console.log('allOtherSwaps:', allOtherSwaps);
     console.log('yourBrainSwaps:', yourBrainSwaps);
     console.log('swapCurrentlyEditing:', swapCurrentlyEditing);
   });
