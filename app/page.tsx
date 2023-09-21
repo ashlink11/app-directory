@@ -72,6 +72,44 @@ export default function Page() {
     );
   }
 
+  function renderBody(items) {
+    return (
+      <>
+        <div className="">
+          <div className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2">
+            {items.map((item) => {
+              return (
+                <div key={item.name} className="rounded-xl bg-gray-700 p-3">
+                  <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
+                    <span>{item.name}</span>
+                    <Button
+                      radius="full"
+                      size="sm"
+                      className=""
+                      onClick={() => {
+                        changeButtonState(item.buttonText);
+                      }}
+                    >
+                      {item.buttonText}
+                    </Button>
+                  </div>
+
+                  <div>
+                    {item.description ? (
+                      <div className="line-clamp-3 text-sm text-gray-400 group-hover:text-gray-300">
+                        {item.description}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <NextUIProvider>
       <div className="space-y-8">
@@ -80,51 +118,14 @@ export default function Page() {
         </h1>
 
         <div id="main-container" className="space-y-10 text-white">
-          {startingData.map((section) => {
-            return (
-              <div id={section.name} key={section.name} className="space-y-5">
-                {renderHeader(section.name)}
-                <div className="">
-                  <div
-                    id={section.name}
-                    key={section.name}
-                    className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2"
-                  >
-                    {section.items.map((item) => {
-                      return (
-                        <div
-                          key={item.name}
-                          className="rounded-xl bg-gray-700 p-3"
-                        >
-                          <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
-                            <span>{item.name}</span>
-                            <Button
-                              radius="full"
-                              size="sm"
-                              className=""
-                              onClick={() => {
-                                changeButtonState(item.buttonText);
-                              }}
-                            >
-                              {item.buttonText}
-                            </Button>
-                          </div>
-
-                          <div>
-                            {item.description ? (
-                              <div className="line-clamp-3 text-sm text-gray-400 group-hover:text-gray-300">
-                                {item.description}
-                              </div>
-                            ) : null}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          <div className="space-y-5">
+            {renderHeader('Your brain swaps (moods & mindsets)')}
+            {renderBody(yourBrainSwaps)}
+            {renderHeader('all other brain swaps (moods & mindsets)')}
+            {renderBody(allOtherSwaps)}
+            {renderHeader('create a brain swaps (mood and/or mindset)')}
+            {renderBody([swapCurrentlyEditing])}
+          </div>
         </div>
         <h2 className="text-small font-medium text-gray-500">
           ~~~ the evolution of human philosophy is the evolution of AI
