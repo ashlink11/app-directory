@@ -55,6 +55,16 @@ export default function Page() {
     throw new Error('Function not implemented.');
   }
 
+  function renderHeader(headerText) {
+    return (
+      <>
+        <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+          {headerText}
+        </div>
+      </>
+    );
+  }
+
   return (
     <NextUIProvider>
       <div className="space-y-8">
@@ -66,9 +76,7 @@ export default function Page() {
           {startingData.map((section) => {
             return (
               <div id={section.name} key={section.name} className="space-y-5">
-                <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                  {section.name}
-                </div>
+                {renderHeader(section.name)}
                 <div className="">
                   <div
                     id={section.name}
