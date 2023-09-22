@@ -42,14 +42,14 @@ export const startingSwaps: { items: Item[] }[] = [
         name: 'news reader',
         slug: 'parallel-routes',
         description: "it's important to keep up with the news.",
-        buttonText: 'remove',
+        buttonText: 'add',
       },
       {
         id: 6,
         name: 'art lover',
         slug: 'parallel-routes',
         description: 'things like music are the joy of life.',
-        buttonText: 'remove',
+        buttonText: 'add',
       },
       {
         id: 7,

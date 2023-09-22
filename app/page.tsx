@@ -2,6 +2,7 @@
 import { startingData } from '#/lib/starting-data';
 import { startingSwaps } from '#/lib/starting-swaps';
 import { Button, ButtonGroup } from '@nextui-org/react';
+import { Input } from '@nextui-org/react';
 import Link from 'next/link';
 import * as React from 'react';
 import { NextUIProvider } from '@nextui-org/react';
@@ -11,6 +12,7 @@ export default function Page() {
   const [allOtherSwaps, setAllOtherSwaps] = useState([]);
   const [yourBrainSwaps, setYourBrainSwaps] = useState([]);
   const [swapCurrentlyEditing, setSwapCurrentlyEditing] = useState({});
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     setYourBrainSwaps([
@@ -31,7 +33,7 @@ export default function Page() {
       name: '__title__',
       slug: 'streaming',
       description: '__description__',
-      buttonText: 'create',
+      buttonText: 'edit',
     });
   }, []);
 
@@ -56,11 +58,13 @@ export default function Page() {
     if (swapButtonText === 'edit') {
       // switch text fields to input fields
       // switch button text to done
+      setEditMode(true);
     }
     if (swapButtonText === 'done') {
       // add to allOtherSwaps
       // give it an id
       // switch buttonText to add
+      setEditMode(false);
     }
   }
 
@@ -112,6 +116,40 @@ export default function Page() {
     );
   }
 
+  function renderEditorBody(item) {
+    return (
+      <>
+        <div className="">
+          <div className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2">
+            <div key={item.name} className="rounded-xl bg-gray-700 p-3">
+              <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
+                <span>{item.name}</span>
+                <Button
+                  radius="full"
+                  size="sm"
+                  className=""
+                  onClick={() => {
+                    changeButtonState(item.id, item.buttonText);
+                  }}
+                >
+                  {item.buttonText}
+                </Button>
+              </div>
+
+              <div>
+                {item.description ? (
+                  <div className="line-clamp-3 text-sm text-gray-400 group-hover:text-gray-300">
+                    {item.description}
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <NextUIProvider>
       <div className="space-y-8">
@@ -126,7 +164,7 @@ export default function Page() {
             {renderHeader('all other brain swaps (moods & mindsets)')}
             {renderBody(allOtherSwaps)}
             {renderHeader('create a brain swaps (mood and/or mindset)')}
-            {renderBody([swapCurrentlyEditing])}
+            {renderEditorBody(swapCurrentlyEditing)}
           </div>
         </div>
         <h2 className="text-small font-medium text-gray-500">
