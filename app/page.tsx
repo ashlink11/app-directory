@@ -13,6 +13,10 @@ export default function Page() {
   const [yourBrainSwaps, setYourBrainSwaps] = useState([]);
   const [swapCurrentlyEditing, setSwapCurrentlyEditing] = useState({});
   const [editMode, setEditMode] = useState(false);
+  const [inputName, setInputName] = useState('');
+  const [inputDescription, setInputDescription] = useState('');
+  const [inputID, setInputID] = useState(0);
+  const [inputButtonText, setInputButtonText] = useState('');
 
   useEffect(() => {
     setYourBrainSwaps([
