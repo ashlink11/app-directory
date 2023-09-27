@@ -12,7 +12,7 @@ export default function Page() {
   const [allOtherSwaps, setAllOtherSwaps] = useState([]);
   const [yourBrainSwaps, setYourBrainSwaps] = useState([]);
   const [swapCurrentlyEditing, setSwapCurrentlyEditing] = useState({});
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState(true);
   const [inputName, setInputName] = useState('');
   const [inputDescription, setInputDescription] = useState('');
   const [inputID, setInputID] = useState(0);
@@ -37,7 +37,7 @@ export default function Page() {
       name: '__title__',
       slug: 'streaming',
       description: '__description__',
-      buttonText: 'edit',
+      buttonText: 'done',
     });
   }, []);
 
@@ -93,7 +93,7 @@ export default function Page() {
                   <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
                     <span>{item.name}</span>
                     <Button
-                      radius="full"
+                      radius="sm"
                       size="sm"
                       className=""
                       onClick={() => {
@@ -127,9 +127,15 @@ export default function Page() {
           <div className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2">
             <div key={item.name} className="rounded-xl bg-gray-700 p-3">
               <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
-                <span>{item.name}</span>
+                <Input
+                  size="sm"
+                  variant="bordered"
+                  className="max-w-[110px] p-1"
+                  radius="sm"
+                  placeholder="title"
+                ></Input>
                 <Button
-                  radius="full"
+                  radius="sm"
                   size="sm"
                   className=""
                   onClick={() => {
@@ -141,11 +147,21 @@ export default function Page() {
               </div>
 
               <div>
-                {item.description ? (
+                {editMode === false ? (
                   <div className="line-clamp-3 text-sm text-gray-400 group-hover:text-gray-300">
                     {item.description}
                   </div>
-                ) : null}
+                ) : (
+                  <>
+                    <Input
+                      size="sm"
+                      variant="bordered"
+                      radius="sm"
+                      placeholder="description"
+                      className="max-w-[220px] p-1"
+                    ></Input>
+                  </>
+                )}
               </div>
             </div>
           </div>
