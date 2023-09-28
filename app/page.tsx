@@ -48,15 +48,23 @@ export default function Page() {
     console.log('swapCurrentlyEditing:', swapCurrentlyEditing);
   });
 
+  function addToArray(swapID, targetArray) {}
+
+  function removeFromArray(swapID, targetArray) {}
+
   function changeButtonState(swapID, swapButtonText) {
     if (swapButtonText === 'add') {
       // remove from allOtherSwaps
       // add to yourBrainSwaps
+      addToArray(swapID, 'yourBrainSwaps');
+      removeFromArray(swapID, 'allOtherSwaps');
       // switch button text to remove
     }
     if (swapButtonText === 'remove') {
       // remove from yourBrainSwaps
       // add to allOtherSwaps
+      addToArray(swapID, 'allOtherSwaps');
+      removeFromArray(swapID, 'yourBrainSwaps');
       // switch button text to add
     }
     if (swapButtonText === 'edit') {
