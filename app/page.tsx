@@ -51,12 +51,18 @@ export default function Page() {
   function updateArrays(swapID, targetArray) {
     let oldArray;
     let newArray;
+    let oldButtonText;
+    let newButtonText;
     if (targetArray === 'allOtherSwaps') {
       newArray = allOtherSwaps;
       oldArray = yourBrainSwaps;
+      oldButtonText = 'remove';
+      newButtonText = 'add';
     } else {
       newArray = yourBrainSwaps;
       oldArray = allOtherSwaps;
+      oldButtonText = 'add';
+      newButtonText = 'remove';
     }
     let index;
     let filteredArray = [];
@@ -67,7 +73,16 @@ export default function Page() {
         filteredArray[i] = oldArray[i];
       }
     }
-    newArray.push(oldArray[index]);
+
+    console.log('oldArray[index]', oldArray[index]);
+    let updatedSwap = {
+      id: swapID,
+      name: oldArray[index].name,
+      slug: '',
+      description: oldArray[index].description,
+      buttonText: newButtonText,
+    };
+    newArray.push(updatedSwap);
     if (targetArray === 'allOtherSwaps') {
       setAllOtherSwaps(newArray);
       setYourBrainSwaps(filteredArray);
@@ -120,7 +135,7 @@ export default function Page() {
           <div className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2">
             {items.map((item) => {
               return (
-                <div key={item.name} className="rounded-xl bg-gray-700 p-3">
+                <div key={item.id} className="rounded-xl bg-gray-700 p-3">
                   <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
                     <span>{item.name}</span>
                     <Button
@@ -156,7 +171,7 @@ export default function Page() {
       <>
         <div className="">
           <div className="bg-gray-1000 grid grid-cols-1 gap-5 rounded-xl p-5 lg:grid-cols-2">
-            <div key={item.name} className="rounded-xl bg-gray-700 p-3">
+            <div key={item.id} className="rounded-xl bg-gray-700 p-3">
               <div className="flex justify-between  font-medium text-gray-200 group-hover:text-gray-50">
                 <Input
                   size="sm"
