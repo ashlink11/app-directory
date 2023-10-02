@@ -48,23 +48,46 @@ export default function Page() {
     console.log('swapCurrentlyEditing:', swapCurrentlyEditing);
   });
 
-  function addToArray(swapID, targetArray) {}
-
-  function removeFromArray(swapID, targetArray) {}
+  function updateArrays(swapID, targetArray) {
+    let oldArray;
+    let newArray;
+    if (targetArray === 'allOtherSwaps') {
+      newArray = allOtherSwaps;
+      oldArray = yourBrainSwaps;
+    } else {
+      newArray = yourBrainSwaps;
+      oldArray = allOtherSwaps;
+    }
+    let index;
+    let filteredArray = [];
+    for (let i = 0; i < oldArray.length; i++) {
+      if (oldArray[i].id === swapID) {
+        index = i;
+      } else {
+        filteredArray[i] = oldArray[i];
+      }
+    }
+    newArray.push(oldArray[index]);
+    if (targetArray === 'allOtherSwaps') {
+      setAllOtherSwaps(newArray);
+      setYourBrainSwaps(filteredArray);
+    } else {
+      setAllOtherSwaps(filteredArray);
+      setYourBrainSwaps(newArray);
+    }
+  }
 
   function changeButtonState(swapID, swapButtonText) {
     if (swapButtonText === 'add') {
       // remove from allOtherSwaps
       // add to yourBrainSwaps
-      addToArray(swapID, 'yourBrainSwaps');
-      removeFromArray(swapID, 'allOtherSwaps');
+      updateArrays(swapID, 'yourBrainSwaps');
       // switch button text to remove
     }
     if (swapButtonText === 'remove') {
       // remove from yourBrainSwaps
       // add to allOtherSwaps
-      addToArray(swapID, 'allOtherSwaps');
-      removeFromArray(swapID, 'yourBrainSwaps');
+      updateArrays(swapID, 'allOtherSwaps');
       // switch button text to add
     }
     if (swapButtonText === 'edit') {
